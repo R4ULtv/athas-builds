@@ -19,7 +19,7 @@ on:
       ref:
         description: Branch/tag/ref to build
         type: string
-        default: main
+        default: master
 jobs:
   build:
     runs-on: windows-latest
