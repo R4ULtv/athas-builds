@@ -51,34 +51,95 @@ jobs:
           repository: ${{ inputs.repository }}
           ref: ${{ inputs.ref }}
           path: athas
+
+      # Manual Bun installation
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - name: Run setup-win
-        working-directory: athas
-        run: bun run setup-win
-      - name: Install rust nightly
+
+      # Manual Rust installation (using the official action)
+      - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
           toolchain: nightly
           override: true
-          target: wasm32-wasip1
+          targets: wasm32-wasip1
+
+      # Install Node.js (required by some dependencies)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # Manual project setup (equivalent to what setup-win would do)
+      - name: Manual Project Setup
+        working-directory: athas
+        run: |
+          Write-Host "=== Manual Athas Project Setup ==="
+
+          # Install project dependencies
+          Write-Host "Installing project dependencies with Bun..."
+          bun install
+
+          # Verify installations
+          Write-Host "Verifying installations..."
+          Write-Host "Bun version:"
+          bun --version
+
+          Write-Host "Rust version:"
+          rustc --version
+          cargo --version
+
+          Write-Host "Node version:"
+          node --version
+
+          # Check if Tauri CLI is available
+          Write-Host "Checking Tauri CLI..."
+          try {
+            bun run tauri --version
+            Write-Host "✅ Tauri CLI available"
+          }
+          catch {
+            Write-Host "⚠️ Tauri CLI not found, but continuing..."
+          }
+
+          Write-Host "✅ Manual setup completed"
+        shell: pwsh
+
+      # Optional: Run type checking to ensure everything is set up correctly
+      - name: Type Check (Optional)
+        working-directory: athas
+        run: bun run type-check
+        continue-on-error: true
+
       - name: Rust Cache
         uses: Swatinem/rust-cache@v2
         with:
-          key: ${{ matrix.backend }}-${{ hashFiles('Cargo.lock') }}
+          key: ${{ matrix.backend }}-${{ hashFiles('athas/Cargo.lock') }}
           workspaces: "athas -> target"
+
       - name: Setup rustflags
         shell: pwsh
         run: ./scripts/Parse-Rustflags.ps1 ${{ matrix.rustflags }}
-      - name: Build release
+
+      # Build the Rust project
+      - name: Build Tauri Application
         working-directory: athas
         env:
           ATHAS_UPDATE_EXPLANATION: "Please use Scoop to update Athas."
-        run: cargo build --release
+        run: |
+          Write-Host "Building Tauri application..."
+          # Use Tauri build instead of direct cargo build for a Tauri project
+          bun run tauri build --target x86_64-pc-windows-msvc
+        shell: pwsh
+
+      # Archive the built application
       - name: Archive build
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.artifact_name }}
-          path: athas/target/release/athas.exe
+          path: |
+            athas/src-tauri/target/release/athas.exe
+            athas/src-tauri/target/release/bundle/msi/*.msi
+            athas/src-tauri/target/release/bundle/nsis/*.exe
