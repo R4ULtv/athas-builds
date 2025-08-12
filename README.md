@@ -1,6 +1,6 @@
 # Athas - External Builds
 
-[![Build Status](https://github.com/r4ultv/athas-builds/actions/workflows/scheduled-nightly-build.yml/badge.svg)](https://github.com/r4ultv/athas-builds/actions/workflows/scheduled-nightly-build.yml)
+[![Build Status](https://github.com/R4ULtv/athas-builds/actions/workflows/nightly.yml/badge.svg)](https://github.com/r4ultv/athas-builds/actions//workflows/nightly.yml)
 
 This repository provides automated, external builds for the [Athas](https://github.com/athasdev/athas) lightweight code editor. Its purpose is to automatically compile the latest code from the main project and create installable packages for various operating systems.
 
