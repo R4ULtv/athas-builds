@@ -1,4 +1,4 @@
-# Athas - External Builds
+# Athas - Windows Builds
 
 [![Build Status](https://github.com/R4ULtv/athas-builds/actions/workflows/nightly.yml/badge.svg)](https://github.com/r4ultv/athas-builds/actions//workflows/nightly.yml)
 
@@ -12,8 +12,6 @@ You can find all the latest builds on the [**Releases Page**](https://github.com
 
 Each release is tagged with the date it was built and includes installers for:
 *   **Windows** (`.msi`, `.exe`)
-*   **Linux** (`.deb`, `.rpm`, `.AppImage`)
-*   **macOS** (`.dmg`, `.app`) - Universal binaries supporting both Intel and Apple Silicon Macs
 
 ## How It Works
 
@@ -21,7 +19,7 @@ This repository uses a set of GitHub Actions workflows to manage the entire proc
 
 1.  **Scheduled Trigger:** A workflow runs every night at midnight (UTC).
 2.  **Fetch Latest Code:** It identifies the latest commit on the `master` branch of the official `athasdev/athas` repository.
-3.  **Build Application:** A reusable workflow compiles the Tauri application for Windows, Linux, and macOS, creating the necessary installers.
+3.  **Build Application:** A reusable workflow compiles the Tauri application for Windows creating the necessary installers.
 4.  **Create Release:** Once the builds are complete, another workflow publishes them to a new GitHub Release, making them available for download.
 
 ## About Athas
