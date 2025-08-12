@@ -4,9 +4,6 @@
 
 This repository provides automated, external builds for the [Athas](https://github.com/athasdev/athas) lightweight code editor. Its purpose is to automatically compile the latest code from the main project and create installable packages for various operating systems.
 
-[![Athas Nightly](./src/assets/athas-nightly.png)](./src/assets/athas-nightly.png)
-
-
 > **This repository does not contain the source code for the editor itself.** It only contains the GitHub Actions workflows required for the build process.
 
 ## 🚀 Get the Latest Builds
