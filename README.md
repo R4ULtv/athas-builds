@@ -1,14 +1,17 @@
 # Athas - Windows Builds
 
-[![Build Status](https://github.com/R4ULtv/athas-builds/actions/workflows/nightly.yml/badge.svg)](https://github.com/r4ultv/athas-builds/actions//workflows/nightly.yml)
+[![Build Status](https://github.com/R4ULtv/athas-builds/actions/workflows/nightly.yml/badge.svg)](https://github.com/R4ULtv/athas-builds/actions/workflows/nightly.yml)
 
 This repository provides automated, external builds for the [Athas](https://github.com/athasdev/athas) lightweight code editor. Its purpose is to automatically compile the latest code from the main project and create installable packages for various operating systems.
 
-**This repository does not contain the source code for the editor itself.** It only contains the GitHub Actions workflows required for the build process.
+[![Athas Nightly](./src/assets/athas-nightly.png)](./src/assets/athas-nightly.png)
+
+
+> **This repository does not contain the source code for the editor itself.** It only contains the GitHub Actions workflows required for the build process.
 
 ## 🚀 Get the Latest Builds
 
-You can find all the latest builds on the [**Releases Page**](https://github.com/r4ultv/athas-builds/releases).
+You can find all the latest builds on the [**Releases Page**](https://github.com/R4ULtv/athas-builds/releases).
 
 Each release is tagged with the date it was built and includes installers for:
 *   **Windows** (`.msi`, `.exe`)
