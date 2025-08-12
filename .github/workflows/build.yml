@@ -59,13 +59,13 @@ jobs:
           key: ${{ runner.os }}-bun-${{ hashFiles('athas/**/bun.lockb') }}
           restore-keys: |
             ${{ runner.os }}-bun-
-      - name: Override Tauri config
+      - name: Disable Tauri Updater
         working-directory: ./athas/src-tauri
         shell: pwsh
         run: |
-          Copy-Item "tauri.conf.json" "tauri.conf.json.backup"
           $t_conf = Get-Content "tauri.conf.json" -Raw | ConvertFrom-Json
-          $t_conf.plugins.updater.pubkey = "${{ secrets.TAURI_SIGNING_PUBLIC_KEY }}"
+          $t_conf.bundle.createUpdaterArtifacts = $false
+          $t_conf.plugins.updater.active = $false
           $t_conf | ConvertTo-Json -Depth 100 | Set-Content "tauri.conf.json"
       - name: Install frontend dependencies
         working-directory: ./athas
@@ -73,8 +73,6 @@ jobs:
       - name: Build Tauri application
         working-directory: ./athas
         run: bun run tauri build
-        env:
-          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -125,12 +123,11 @@ jobs:
           key: ${{ runner.os }}-bun-${{ hashFiles('athas/**/bun.lockb') }}
           restore-keys: |
             ${{ runner.os }}-bun-
-      - name: Override Tauri config
+      - name: Disable Tauri Updater
         working-directory: ./athas/src-tauri
         shell: bash
         run: |
-          cp tauri.conf.json tauri.conf.json.backup
-          cat tauri.conf.json | jq '.plugins.updater.pubkey = "${{ secrets.TAURI_SIGNING_PUBLIC_KEY }}"' > tauri.conf.json.tmp
+          cat tauri.conf.json | jq '.bundle.createUpdaterArtifacts = false | .plugins.updater.active = false' > tauri.conf.json.tmp
           mv tauri.conf.json.tmp tauri.conf.json
       - name: Install frontend dependencies
         working-directory: ./athas
@@ -138,8 +135,6 @@ jobs:
       - name: Build Tauri application
         working-directory: ./athas
         run: bun run tauri build
-        env:
-          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
