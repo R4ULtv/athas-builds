@@ -130,7 +130,7 @@ jobs:
         shell: bash
         run: |
           cp tauri.conf.json tauri.conf.json.backup
-          cat tauri.conf.json | jq '.plugins.updater.pubkey = "${{ secrets.TAURI_PUBLIC_KEY || "" }}"' > tauri.conf.json.tmp
+          cat tauri.conf.json | jq '.plugins.updater.pubkey = "${{ secrets.TAURI_SIGNING_PUBLIC_KEY || "" }}"' > tauri.conf.json.tmp
           mv tauri.conf.json.tmp tauri.conf.json
       - name: Install frontend dependencies
         working-directory: ./athas
