@@ -80,4 +80,5 @@ jobs:
           path: |
             athas/target/release/bundle/msi/*.msi
             athas/target/release/bundle/nsis/*.exe
+            athas/target/release/athas-code.exe
           retention-days: 30
