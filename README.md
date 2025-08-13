@@ -2,28 +2,66 @@
 
 [![Build Status](https://github.com/R4ULtv/athas-builds/actions/workflows/nightly.yml/badge.svg)](https://github.com/R4ULtv/athas-builds/actions/workflows/nightly.yml)
 
-This repository provides automated, external builds for the [Athas](https://github.com/athasdev/athas) lightweight code editor. Its purpose is to automatically compile the latest code from the main project and create installable packages for various operating systems.
+This repository provides automated, external **Windows builds** for the [Athas](https://github.com/athasdev/athas) lightweight code editor. Its purpose is to automatically compile the latest code from the main project and create installable packages.
 
-> **This repository does not contain the source code for the editor itself.** It only contains the GitHub Actions workflows required for the build process.
+> **This repository does not contain the source code for the editor itself.**
+> It only contains the GitHub Actions workflows required for the build process.
+
+---
 
 ## 🚀 Get the Latest Builds
 
-You can find all the latest builds on the [**Releases Page**](https://github.com/R4ULtv/athas-builds/releases).
+You can find all the latest Windows builds on the [**Releases Page**](https://github.com/R4ULtv/athas-builds/releases).
 
-Each release is tagged with the date it was built and includes installers for:
-*   **Windows** (`.msi`, `.exe`)
+Each release is tagged with the date it was built and includes:
 
-## How It Works
+* **Windows installer** (`.msi`)
+* **Windows setup executable** (`.exe`)
 
-This repository uses a set of GitHub Actions workflows to manage the entire process:
+---
 
-1.  **Scheduled Trigger:** A workflow runs every night at midnight (UTC).
-2.  **Fetch Latest Code:** It identifies the latest commit on the `master` branch of the official `athasdev/athas` repository.
-3.  **Build Application:** A reusable workflow compiles the Tauri application for Windows creating the necessary installers.
-4.  **Create Release:** Once the builds are complete, another workflow publishes them to a new GitHub Release, making them available for download.
+## 📥 Installation Methods
 
-## About Athas
+There are **two ways** to install Athas Nightly:
 
-Athas is a lightweight, Tauri-based code editor. For more information, to report issues with the editor itself, or to contribute, please visit the official repository:
+### **1. Using the installer**
+
+Download either the `.msi` or `.exe` file from the [Releases](https://github.com/R4ULtv/athas-builds/releases) page and run it.
+
+---
+
+### **2. Using Scoop**
+
+1. **Install Microsoft Visual C++ Redistributables (required)**
+   Athas requires the VC++ runtime. Install it via Scoop first:
+
+   ```powershell
+   scoop bucket add extras
+   scoop install extras/vcredist
+   ```
+
+2. **Install Athas Nightly**
+
+   ```powershell
+   scoop bucket add versions
+   scoop install versions/athas-nightly
+   ```
+
+---
+
+## ⚙️ How It Works
+
+This repository uses GitHub Actions workflows to manage the process:
+
+1. **Scheduled Trigger** – Runs nightly at midnight UTC.
+2. **Fetch Latest Code** – Gets the latest commit from the `master` branch of the official [`athasdev/athas`](https://github.com/athasdev/athas) repository.
+3. **Build Application** – Compiles the Tauri application for Windows and generates the installers.
+4. **Create Release** – Publishes the installers to a new GitHub Release.
+
+---
+
+## ℹ️ About Athas
+
+Athas is a lightweight, Tauri-based code editor. For more information, to report issues with the editor itself, or to contribute, visit:
 
 ➡️ **[github.com/athasdev/athas](https://github.com/athasdev/athas)**
