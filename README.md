@@ -32,6 +32,10 @@ Download either the `.msi` or `.exe` file from the [Releases](https://github.com
 
 ### **2. Using Scoop**
 
+Before installing, make sure you have **Microsoft Edge WebView2 Runtime** installed.
+Some Windows systems already include it by default, but if not, you can download and install it from:
+➡️ [Microsoft Edge WebView2 Runtime Download](https://developer.microsoft.com/it-it/microsoft-edge/webview2)
+
 1. **Install Microsoft Visual C++ Redistributables (required)**
    Athas requires the VC++ runtime. Install it via Scoop first:
 
