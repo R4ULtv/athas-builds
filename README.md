@@ -9,47 +9,44 @@ This repository provides automated, external **Windows builds** for the [Athas](
 
 ---
 
-## 🚀 Get the Latest Builds
+## 🚀 Get the Latest Builds & Installation
 
 You can find all the latest Windows builds on the [**Releases Page**](https://github.com/R4ULtv/athas-builds/releases).
 
-Each release is tagged with the date it was built and includes:
+Each release is tagged with the date it was built and includes multiple installation options:
 
-* **Windows installer** (`.msi`)
-* **Windows setup executable** (`.exe`)
+### **📦 Complete Setup (Recommended)**
 
----
+**Files**: `Athas_0.1.0_x64-setup.exe` or `Athas_0.1.0_x64_en-US.msi`
 
-## 📥 Installation Methods
+These installers include **everything built-in**:
+[x] Microsoft WebView2 Runtime
+[x] Visual C++ Redistributables
+[x] Complete standalone installation
 
-There are **two ways** to install Athas Nightly:
-
-### **1. Using the installer**
-
-Download either the `.msi` or `.exe` file from the [Releases](https://github.com/R4ULtv/athas-builds/releases) page and run it.
+Simply download and run either file from the [Releases](https://github.com/R4ULtv/athas-builds/releases) page - no additional setup required.
 
 ---
 
-### **2. Using Scoop**
+### **🪣 Scoop Package Manager**
 
-Before installing, make sure you have **Microsoft WebView2 Runtime** installed.
-Some Windows systems already include it by default, but if not, you can download and install it from:
-[Microsoft WebView2 Runtime](https://developer.microsoft.com/it-it/microsoft-edge/webview2)
+**For advanced users** who prefer package management:
 
-1. **Install Microsoft Visual C++ Redistributables (required)**
-   Athas requires the VC++ runtime. Install it via Scoop first:
+```powershell
+scoop bucket add versions
+scoop install versions/athas-nightly
+```
 
-   ```powershell
-   scoop bucket add extras
-   scoop install extras/vcredist
-   ```
-
-2. **Install Athas Nightly**
-
-   ```powershell
-   scoop bucket add versions
-   scoop install versions/athas-nightly
-   ```
+> **⚠️ Important**: The Scoop version is a **standalone build** that requires manual setup of dependencies:
+>
+> 1. **Install Microsoft Visual C++ Redistributables**:
+>    ```powershell
+>    scoop bucket add extras
+>    scoop install extras/vcredist
+>    ```
+>
+> 2. **Install Microsoft WebView2 Runtime** (if not already present):
+>    Download from [Microsoft WebView2 Runtime](https://developer.microsoft.com/it-it/microsoft-edge/webview2)
 
 ---
 
