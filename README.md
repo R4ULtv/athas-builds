@@ -17,12 +17,12 @@ Each release is tagged with the date it was built and includes multiple installa
 
 ### **📦 Complete Setup (Recommended)**
 
-**Files**: `Athas_0.1.0_x64-setup.exe` or `Athas_0.1.0_x64_en-US.msi`
+**Files**: `Athas_{version}-setup.exe` or `Athas_{version}_x64_en-US.msi`
 
 These installers include **everything built-in**:
-[x] Microsoft WebView2 Runtime
-[x] Visual C++ Redistributables
-[x] Complete standalone installation
+- Microsoft WebView2 Runtime
+- Visual C++ Redistributables
+- Complete standalone installation
 
 Simply download and run either file from the [Releases](https://github.com/R4ULtv/athas-builds/releases) page - no additional setup required.
 
@@ -37,16 +37,16 @@ scoop bucket add versions
 scoop install versions/athas-nightly
 ```
 
-> **⚠️ Important**: The Scoop version is a **standalone build** that requires manual setup of dependencies:
->
-> 1. **Install Microsoft Visual C++ Redistributables**:
->    ```powershell
->    scoop bucket add extras
->    scoop install extras/vcredist
->    ```
->
-> 2. **Install Microsoft WebView2 Runtime** (if not already present):
->    Download from [Microsoft WebView2 Runtime](https://developer.microsoft.com/it-it/microsoft-edge/webview2)
+**Important**: The Scoop version is a **standalone build** that requires manual setup of dependencies:
+
+1. **Install Microsoft Visual C++ Redistributables**:
+  ```powershell
+  scoop bucket add extras
+  scoop install extras/vcredist
+  ```
+
+2. **Install Microsoft WebView2 Runtime** (if not already present):
+  Download from [Microsoft WebView2 Runtime](https://developer.microsoft.com/it-it/microsoft-edge/webview2)
 
 ---
 
