@@ -40,10 +40,10 @@ scoop install versions/athas-nightly
 **Important**: The Scoop version is a **standalone build** that requires manual setup of dependencies:
 
 1. **Install Microsoft Visual C++ Redistributables**:
-  ```powershell
-  scoop bucket add extras
-  scoop install extras/vcredist
-  ```
+    ```powershell
+    scoop bucket add extras
+    scoop install extras/vcredist
+    ```
 
 2. **Install Microsoft WebView2 Runtime** (if not already present):
   Download from [Microsoft WebView2 Runtime](https://developer.microsoft.com/it-it/microsoft-edge/webview2)
